@@ -1,0 +1,40 @@
+// const h1Tag = document.createElement("h1");
+// const h2Tag = document.createElement("h2");
+// h1Tag.innerText = "Hello from JS";
+// h2Tag.innerText = "Heading 2";
+// const root = document.getElementById("root");
+// // root.appendChild(h1Tag);
+// // root.appendChild(h2Tag);
+// root.append(h1Tag, h2Tag);
+
+//Implementing same code with React.createElement*********
+// const h1 = React.createElement("h1", {}, "Hello Everyone!");
+// const h2 = React.createElement("h2", {}, "Greetings from h2");
+// const div = React.createElement("div", {}, [h1, h2]);
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+
+// Implementing same code using JSX*********
+
+// const title = "Learning React";
+// const head1 = <h1 key="heading1">Helloo Everyone</h1>;
+
+// const Header2 = () => (
+//   <div id="Header2" key="head2">
+//     <h1 key="first">This is from functional component</h1>
+//     <h2 key="second">this is h2 from func component</h2>
+//   </div>
+// );
+
+// const H2 = () => (
+//   <div>
+//     <h1>{title}</h1>
+//     {head1}
+//     <Header2 />
+//     <h2>Greetings from h2</h2>
+//   </div>
+// );
+
+// const Root = ReactDOM.createRoot(document.getElementById("root"));
+
+// Root.render(<H2 />);
+//never use tag name as identifier as render will fail, for eg const h1 = (*some JSX) this will result in render failure

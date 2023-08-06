@@ -1,47 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-// const h1Tag = document.createElement("h1");
-// const h2Tag = document.createElement("h2");
-// h1Tag.innerText = "Hello from JS";
-// h2Tag.innerText = "Heading 2";
-// const root = document.getElementById("root");
-// // root.appendChild(h1Tag);
-// // root.appendChild(h2Tag);
-// root.append(h1Tag, h2Tag);
-
-//Implementing same code with React.createElement*********
-// const h1 = React.createElement("h1", {}, "Hello Everyone!");
-// const h2 = React.createElement("h2", {}, "Greetings from h2");
-// const div = React.createElement("div", {}, [h1, h2]);
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// Implementing same code using JSX*********
-
-// const title = "Learning React";
-// const head1 = <h1 key="heading1">Helloo Everyone</h1>;
-
-// const Header2 = () => (
-//   <div id="Header2" key="head2">
-//     <h1 key="first">This is from functional component</h1>
-//     <h2 key="second">this is h2 from func component</h2>
-//   </div>
-// );
-
-// const H2 = () => (
-//   <div>
-//     <h1>{title}</h1>
-//     {head1}
-//     <Header2 />
-//     <h2>Greetings from h2</h2>
-//   </div>
-// );
-
-// const Root = ReactDOM.createRoot(document.getElementById("root"));
-
-// Root.render(<H2 />);
-//never use tag name as identifier as render will fail, for eg const h1 = (*some JSX) this will result in render failure
-
-const Restraunts = [
+export const Restraunts = [
   {
     info: {
       id: "253990",
@@ -511,87 +468,9 @@ const Restraunts = [
     },
   },
 ];
-const imageSrc =
-  "https://logo.com/image-cdn/images/kts928pd/production/7ab5def0ab1dad26a90bc35cb7eed9e628f7f201-430x430.png?w=1080&q=72";
 
-const HeaderContainer = () => {
-  return (
-    <div className="Header">
-      <a href="/">
-        <img id="image" src={imageSrc} alt="logo" />
-      </a>
-      <ul id="list">
-        <li key="home">
-          <a href="/">Home</a>
-        </li>
-        <li key="AboutUs">About Us</li>
-        <li key="Cart">Cart</li>
-      </ul>
-    </div>
-  );
-};
-
-const urlCloud =
+export const IMG_CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-// {
-//   cloudinaryImageId,
-//   areaName,
-//   cuisines,
-//   avgRating,
-// }
-
-//Props is an object of all the properties that we pass while calling out functional component
-const RestrauntCard = ({
-  cloudinaryImageId,
-  name,
-  areaName,
-  cuisines,
-  avgRating,
-}) => {
-  // const { cloudinaryImageId, name, areaName, cuisines, avgRating } =
-  //   restraunt;
-  return (
-    <div className="Card">
-      <img
-        className="CardImage"
-        alt="restrauntLogo"
-        src={urlCloud + cloudinaryImageId}
-      />
-      <h2>{name}</h2>
-      <h3>{areaName}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating}</h4>
-    </div>
-  );
-};
-
-const BodyContainer = () => {
-  return (
-    <div className="RestrauntList">
-      {Restraunts.map((restraunt) => {
-        return <RestrauntCard {...restraunt.info} />;
-      })}
-      {/* <RestrauntCard props={{Restraunts[0]}} /> */}
-    </div>
-  );
-};
-
-const FooterContainer = () => {
-  return (
-    <div className="Footer">
-      <h3>Contact Us</h3>
-      <h3>Copyright</h3>
-    </div>
-  );
-};
-
-const PageContainer = () => (
-  <>
-    <HeaderContainer />
-    <BodyContainer />
-    <FooterContainer />
-  </>
-);
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<PageContainer />);
+export const IMG_LOGO_URL =
+  "https://logo.com/image-cdn/images/kts928pd/production/7ab5def0ab1dad26a90bc35cb7eed9e628f7f201-430x430.png?w=1080&q=72";
