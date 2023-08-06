@@ -1,0 +1,47 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.Card {
+  border: 1px solid black;
+  margin: 4px 4px 4px 4px;
+  padding: 4px 4px 4px 4px;
+}
+
+.CardImage {
+  height: 160px;
+  width: 240px;
+}
+
+.RestrauntList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Header > #image {
+  height: 50px;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin: 4px;
+}
+
+li {
+  margin: 2px 2px 2px 2px;
+}
+
+#image {
+  height: 50px;
+  margin: 4px;
+  padding: 4px;
+}
+
+.Footer {
+  border: 1px solid black;
+}
