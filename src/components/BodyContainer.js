@@ -1,6 +1,7 @@
 import { Restraunts } from "../config";
 import { IMG_CDN_URL } from "../config";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 function filteredResult(searchTxt, restrauntList) {
   const filteredData = restrauntList.filter((restraunt) =>
@@ -48,16 +49,15 @@ const BodyContainer = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.642684&lng=77.3453639&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const fetchedData = await data.json();
-    console.log(
-      fetchedData.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+
+    console.log(fetchedData);
+
     setFilteredRestraunts(
-      fetchedData.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      fetchedData.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setRestraunts(
-      fetchedData.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      fetchedData.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   }
@@ -81,11 +81,24 @@ const BodyContainer = () => {
       >
         Search
       </button>
-      <div className="RestrauntList">
-        {filteredRestraunts.map((restraunt) => {
-          return <RestrauntCard {...restraunt.info} key={restraunt.info.id} />;
-        })}
-      </div>
+      {filteredRestraunts.length === 0 ? (
+        <div className="RestrauntList">
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+        </div>
+      ) : (
+        <div className="RestrauntList">
+          {filteredRestraunts.map((restraunt) => {
+            return (
+              <RestrauntCard {...restraunt.info} key={restraunt.info.id} />
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
