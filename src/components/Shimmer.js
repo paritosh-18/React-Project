@@ -1,10 +1,9 @@
-const url =
-  "https://miro.medium.com/v2/resize:fit:1358/1*jJKlUDkGzezjiFPagzvnuw.gif";
+import { SHIMMER_GIF } from "../config";
 
 const Shimmer = () => {
   return (
     <div className="Card" id="Shimmer">
-      <img src={url}></img>
+      <img src={SHIMMER_GIF}></img>
     </div>
   );
 };

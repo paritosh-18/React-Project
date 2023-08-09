@@ -469,6 +469,9 @@ export const Restraunts = [
   },
 ];
 
+export const SHIMMER_GIF =
+  "https://miro.medium.com/v2/resize:fit:1358/1*jJKlUDkGzezjiFPagzvnuw.gif";
+
 export const IMG_CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
