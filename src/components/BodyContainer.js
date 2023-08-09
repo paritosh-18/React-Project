@@ -1,10 +1,10 @@
 import { Restraunts } from "../config";
 import { IMG_CDN_URL } from "../config";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function filteredResult(searchTxt) {
-  const filteredData = Restraunts.filter((restraunt) =>
-    restraunt.info.name.includes(searchTxt)
+function filteredResult(searchTxt, restrauntList) {
+  const filteredData = restrauntList.filter((restraunt) =>
+    restraunt.info.name.toLowerCase().includes(searchTxt.toLowerCase())
   );
 
   return filteredData;
@@ -36,7 +36,31 @@ const RestrauntCard = ({
 
 const BodyContainer = () => {
   const [searchText, setSearchText] = useState("");
-  const [restraunts, setRestraunts] = useState(Restraunts);
+  const [restraunts, setRestraunts] = useState([]);
+  const [filteredRestraunts, setFilteredRestraunts] = useState([]);
+
+  useEffect(() => {
+    getRestraunts();
+  }, []);
+
+  async function getRestraunts() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.642684&lng=77.3453639&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const fetchedData = await data.json();
+    console.log(
+      fetchedData.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setFilteredRestraunts(
+      fetchedData.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setRestraunts(
+      fetchedData.data.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+  }
 
   return (
     <>
@@ -52,13 +76,13 @@ const BodyContainer = () => {
       <button
         className="search-btn"
         onClick={() => {
-          setRestraunts(filteredResult(searchText));
+          setFilteredRestraunts(filteredResult(searchText, restraunts));
         }}
       >
         Search
       </button>
       <div className="RestrauntList">
-        {restraunts.map((restraunt) => {
+        {filteredRestraunts.map((restraunt) => {
           return <RestrauntCard {...restraunt.info} key={restraunt.info.id} />;
         })}
       </div>
