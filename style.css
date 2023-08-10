@@ -45,3 +45,19 @@ li {
 .Footer {
   border: 1px solid black;
 }
+
+.restaurant-image {
+  height: 400px;
+  margin: 4px 4px 4px 4px;
+}
+
+.restaurant-page {
+  display: flex;
+}
+
+.restaurant-details {
+  height: 400px;
+  border: 1px solid black;
+  margin: 4px 4px 4px 4px;
+  padding: 4px 4px 4px 4px;
+}

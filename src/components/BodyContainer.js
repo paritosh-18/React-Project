@@ -2,6 +2,7 @@ import { Restraunts } from "../config";
 import { IMG_CDN_URL } from "../config";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 function filteredResult(searchTxt, restrauntList) {
   const filteredData = restrauntList.filter((restraunt) =>
@@ -53,11 +54,11 @@ const BodyContainer = () => {
     console.log(fetchedData);
 
     setFilteredRestraunts(
-      fetchedData.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
+      fetchedData.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setRestraunts(
-      fetchedData.data.cards[3]?.card?.card?.gridElements?.infoWithStyle
+      fetchedData.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   }
@@ -94,7 +95,12 @@ const BodyContainer = () => {
         <div className="RestrauntList">
           {filteredRestraunts.map((restraunt) => {
             return (
-              <RestrauntCard {...restraunt.info} key={restraunt.info.id} />
+              <Link
+                to={"restaurant/" + restraunt?.info?.id}
+                key={restraunt?.info?.id}
+              >
+                <RestrauntCard {...restraunt?.info} />
+              </Link>
             );
           })}
         </div>

@@ -477,3 +477,6 @@ export const IMG_CDN_URL =
 
 export const IMG_LOGO_URL =
   "https://logo.com/image-cdn/images/kts928pd/production/7ab5def0ab1dad26a90bc35cb7eed9e628f7f201-430x430.png?w=1080&q=72";
+
+export const Restaurant_Menu_CDN =
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.642684&lng=77.3453639&restaurantId=542558&catalog_qa=undefined&submitAction=ENTER";
