@@ -7,6 +7,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import LoginForm from "./components/LoginForm";
 
 const PageContainer = () => (
   <>
@@ -37,6 +38,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/login",
+        element: <LoginForm />,
       },
     ],
   },

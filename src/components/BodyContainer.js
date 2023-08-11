@@ -3,38 +3,9 @@ import { IMG_CDN_URL } from "../config";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
-function filteredResult(searchTxt, restrauntList) {
-  const filteredData = restrauntList.filter((restraunt) =>
-    restraunt.info.name.toLowerCase().includes(searchTxt.toLowerCase())
-  );
-
-  return filteredData;
-}
-
-//Props is an object of all the properties that we pass while calling out functional component
-const RestrauntCard = ({
-  cloudinaryImageId,
-  name,
-  areaName,
-  cuisines,
-  avgRating,
-}) => {
-  // const { cloudinaryImageId, name, areaName, cuisines, avgRating } = restraunt; -> another way to destructure props
-  return (
-    <div className="Card">
-      <img
-        className="CardImage"
-        alt="restrauntLogo"
-        src={IMG_CDN_URL + cloudinaryImageId}
-      />
-      <h2>{name}</h2>
-      <h3>{areaName}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating} *</h4>
-    </div>
-  );
-};
+import findRestaurant from "../HelperFunctions/findRestaurant";
+import filteredResult from "../HelperFunctions/filteredResult";
+import RestrauntCard from "./RestaurantCard";
 
 const BodyContainer = () => {
   const [searchText, setSearchText] = useState("");
@@ -51,14 +22,19 @@ const BodyContainer = () => {
     );
     const fetchedData = await data.json();
 
-    console.log(fetchedData);
+    // console.log(fetchedData.data.cards);
+
+    //finding index of cards which contains restaurant array
+    const i = findRestaurant(fetchedData.data.cards);
+
+    // console.log(i);
 
     setFilteredRestraunts(
-      fetchedData.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      fetchedData.data.cards[i]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setRestraunts(
-      fetchedData.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      fetchedData.data.cards[i]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   }

@@ -1,0 +1,8 @@
+# ignoring all node module files
+node_modules
+
+# ignoring parcel cache files
+.parcel-cache
+
+#ignoring dist folder
+dist/

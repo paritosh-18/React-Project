@@ -33,7 +33,7 @@ const HeaderContainer = () => {
             setLoggedIn(true);
           }}
         >
-          Login
+          <Link to={"/login"}>Login</Link>
         </button>
       )}
     </div>
