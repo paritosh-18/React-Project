@@ -10,7 +10,7 @@ const RestaurantMenu = () => {
   }, []);
 
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
 
   async function getRestrauntMenu() {
     const data = await fetch(
@@ -22,7 +22,7 @@ const RestaurantMenu = () => {
     //console.log(json?.data?.cards[0]?.card?.card?.info);
     setRestaurant(json?.data?.cards[0]?.card?.card?.info);
   }
-  console.log(typeof restaurant === "undefined");
+  // console.log(typeof restaurant === "undefined");
   return (
     <div>
       <h1>Restaurant: {restaurant?.name}</h1>

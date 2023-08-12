@@ -8,6 +8,7 @@ import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import LoginForm from "./components/LoginForm";
+import Profile from "./components/Profile";
 
 const PageContainer = () => (
   <>
@@ -26,6 +27,13 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+        children: [
+          {
+            //cildren of children will be consumed by Outlet component in the parent component, here parent is <About /> and child on /about/profile route is <Profile />
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "/",

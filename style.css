@@ -9,6 +9,7 @@
   border: 1px solid black;
   margin: 4px 4px 4px 4px;
   padding: 4px 4px 4px 4px;
+  width: max-content;
 }
 
 .CardImage {
@@ -60,4 +61,15 @@ li {
   border: 1px solid black;
   margin: 4px 4px 4px 4px;
   padding: 4px 4px 4px 4px;
+}
+
+.profile-git {
+  border-radius: 50%;
+}
+
+.github-profile {
+  border: 1px solid black;
+  margin: 4px 4px 4px 4px;
+  padding: 4px 4px 4px 4px;
+  width: max-content;
 }

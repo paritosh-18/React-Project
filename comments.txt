@@ -38,3 +38,13 @@
 
 // Root.render(<H2 />);
 //never use tag name as identifier as render will fail, for eg const h1 = (*some JSX) this will result in render failure
+
+****  useOutlet() hook ******
+In case you want to check if outlet exists and if no, then render placeholder.
+// Placeholder is your own implementation
+function Page() {
+  const outlet = useOutlet()
+
+  return <div>{outlet || <PlaceHolder />}</div>
+
+}
