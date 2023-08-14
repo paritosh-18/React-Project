@@ -480,3 +480,6 @@ export const IMG_LOGO_URL =
 
 export const Restaurant_Menu_CDN =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.642684&lng=77.3453639&restaurantId=542558&catalog_qa=undefined&submitAction=ENTER";
+
+export const SWIGGY_API_LINK =
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.642684&lng=77.3453639&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
