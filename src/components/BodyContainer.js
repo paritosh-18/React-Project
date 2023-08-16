@@ -3,13 +3,35 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filteredResult } from "../utils/helper";
 import RestrauntCard from "./RestaurantCard";
-import useRestaurants from "../utils/useRestaurants";
+import { findRestaurant } from "../utils/helper";
+import { SWIGGY_API_LINK } from "../config";
+// import useRestaurants from "../utils/useRestaurants";
 
 const BodyContainer = () => {
   const [searchText, setSearchText] = useState("");
+  const [restraunts, setRestraunts] = useState([]);
+  const [filteredRestraunts, setFilteredRestraunts] = useState([]);
 
-  // A custom hook to fetch restaurants from the Swiggy API and populate same in two variables
-  const { restraunts, filteredRestraunts } = useRestaurants();
+  useEffect(() => {
+    getRestraunts();
+  }, []);
+
+  async function getRestraunts() {
+    const data = await fetch(SWIGGY_API_LINK);
+    const fetchedData = await data.json();
+
+    //finding index of cards which contains restaurant array
+    const i = findRestaurant(fetchedData.data.cards);
+
+    setFilteredRestraunts(
+      fetchedData.data.cards[i]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setRestraunts(
+      fetchedData.data.cards[i]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+  }
 
   return (
     <>
