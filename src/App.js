@@ -2,13 +2,18 @@ import ReactDOM from "react-dom/client";
 import FooterContainer from "./components/FooterContainer";
 import BodyContainer from "./components/BodyContainer";
 import HeaderContainer from "./components/HeaderContainer";
-import About from "./components/About";
+// import About from "./components/About";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import LoginForm from "./components/LoginForm";
 import Profile from "./components/Profile";
+import { lazy, Suspense } from "react";
+
+// to lazy load or to make a component load on demand, we use lazy() method of react library.
+const About = lazy(() => import("./components/About"));
+console.log(About);
 
 const PageContainer = () => (
   <>
@@ -26,10 +31,14 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense>
+            <About />
+          </Suspense>
+        ),
         children: [
           {
-            //cildren of children will be consumed by Outlet component in the parent component, here parent is <About /> and child on /about/profile route is <Profile />
+            //cildren of children will be consumed by Outlet in the parent component, here parent is <About /> and child on /about/profile route is <Profile />
             path: "profile",
             element: <Profile />,
           },

@@ -39,6 +39,7 @@ class About extends Component {
           {this.state.showProfile ? "Hide" : "Show"}
         </button>
         <div>{this.state.showProfile ? <Profile /> : <div></div>}</div>
+        {/* <Outlet /> */}
       </>
     );
   }
