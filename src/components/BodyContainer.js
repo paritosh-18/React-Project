@@ -36,7 +36,7 @@ const BodyContainer = () => {
   return (
     <>
       <input
-        className="input-btn"
+        className="my-2 mx-1 p-2 shadow-md"
         type="text"
         value={searchText}
         placeholder="Search"
@@ -45,7 +45,7 @@ const BodyContainer = () => {
         }}
       />
       <button
-        className="search-btn"
+        className="my-2 mx-1 p-2 bg-slate-300 rounded-lg hover:bg-purple-300"
         onClick={() => {
           setFilteredRestraunts(filteredResult(searchText, restraunts));
         }}
@@ -53,7 +53,13 @@ const BodyContainer = () => {
         Search
       </button>
       {filteredRestraunts.length === 0 ? (
-        <div className="RestrauntList">
+        <div className="flex flex-wrap">
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
+          <Shimmer />
           <Shimmer />
           <Shimmer />
           <Shimmer />
@@ -62,7 +68,7 @@ const BodyContainer = () => {
           <Shimmer />
         </div>
       ) : (
-        <div className="RestrauntList">
+        <div className="flex flex-wrap">
           {filteredRestraunts.map((restraunt) => {
             return (
               <Link

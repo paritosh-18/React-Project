@@ -11,16 +11,16 @@ const RestaurantMenu = () => {
 
   return (
     <div>
-      <h1>Restaurant: {restaurant?.name}</h1>
+      <h1 className="font-bold text-xl">{restaurant?.name}</h1>
       {typeof restaurant === "undefined" ? (
         <Shimmer />
       ) : (
-        <div className="restaurant-page">
+        <div className="flex">
           <img
-            className="restaurant-image"
+            className="w-96 m-2 p-2 shadow-lg"
             src={IMG_CDN_URL + restaurant?.cloudinaryImageId}
           />
-          <div className="restaurant-details">
+          <div className="m-2 p-2 border-2 shadow-md max-w-prose font-semibold">
             <h4 key="cost">Cost: {restaurant?.costForTwoMessage}</h4>
             <h4 key="cuisines">Cuisines: {restaurant?.cuisines.join(", ")}</h4>
             <h4 key="avgRating">

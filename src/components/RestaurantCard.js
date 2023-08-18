@@ -10,16 +10,16 @@ const RestrauntCard = ({
 }) => {
   // const { cloudinaryImageId, name, areaName, cuisines, avgRating } = restraunt; -> another way to destructure props
   return (
-    <div className="Card">
+    <div className="w-48 m-2 p-2 bg-gray-50 shadow-md">
       <img
-        className="CardImage"
+        className="w-44"
         alt="restrauntLogo"
         src={IMG_CDN_URL + cloudinaryImageId}
       />
-      <h2>{name}</h2>
+      <h2 className="font-bold text-lg text-center">{name}</h2>
       <h3>{areaName}</h3>
       <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating} *</h4>
+      <h4>{avgRating} ⭐</h4>
     </div>
   );
 };

@@ -4,12 +4,12 @@ const Error = () => {
   const { status, statusText } = useRouteError();
   return (
     <div>
-      <h1>Oops... an error occured</h1>
-      <h2>
+      <h1 className="font-bold">Oops... an error occured</h1>
+      <h2 className="font-semibold">
         {status}: {statusText}
       </h2>
       <h4>
-        <Link to={"/"}>Home</Link> - Click to go home
+        <Link className="rounded-xl bg-slate-300 m-1 p-1" to={"/"}>Home</Link> - Click to go home
       </h4>
     </div>
   );

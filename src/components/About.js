@@ -24,8 +24,9 @@ class About extends Component {
     console.log("render About");
     return (
       <>
-        <h1>This is the about us page</h1>
+        <h1 className="font-bold">This is the about us page</h1>
         <button
+          className="bg-slate-200 hover:bg-purple-300 m-2 p-2 rounded-xl"
           onClick={() =>
             this.state.showProfile
               ? this.setState({
