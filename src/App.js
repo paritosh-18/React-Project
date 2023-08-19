@@ -11,6 +11,7 @@ import LoginForm from "./components/LoginForm";
 import Profile from "./components/Profile";
 import { lazy, Suspense, useContext, useState } from "react";
 import UserContext from "./utils/UserContext";
+import InstaMart from "./components/InstaMart";
 
 // to lazy load or to make a component load on demand, we use lazy() method of react library.
 const About = lazy(() => import("./components/About"));
@@ -67,6 +68,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <LoginForm />,
+      },
+      {
+        path: "/instamart",
+        element: <InstaMart />,
       },
     ],
   },
