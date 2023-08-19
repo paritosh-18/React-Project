@@ -9,19 +9,27 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import LoginForm from "./components/LoginForm";
 import Profile from "./components/Profile";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useContext, useState } from "react";
+import UserContext from "./utils/UserContext";
 
 // to lazy load or to make a component load on demand, we use lazy() method of react library.
 const About = lazy(() => import("./components/About"));
-console.log(About);
+// console.log(About);
 
-const PageContainer = () => (
-  <>
-    <HeaderContainer />
-    <Outlet />
-    <FooterContainer />
-  </>
-);
+const PageContainer = () => {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+  });
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <HeaderContainer />
+      <Outlet />
+      <FooterContainer />
+    </UserContext.Provider>
+  );
+};
 
 const appRouter = createBrowserRouter([
   {

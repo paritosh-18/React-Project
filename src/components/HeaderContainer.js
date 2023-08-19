@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IMG_LOGO_URL } from "../config";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const HeaderContainer = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const isOnline = useOnline();
+  const { user, setUser } = useContext(UserContext);
+  const st = "mx-2 p-1 hover:bg-slate-200 rounded-xl";
+  const btn_st =
+    "rounded-md bg-purple-200 h-10 w-14 my-8 shadow-md hover:bg-purple-300";
   return (
     <div className="flex justify-between m-1 p-1 bg-gray-50 shadow-md">
       <Link to={"/"}>
@@ -16,29 +21,34 @@ const HeaderContainer = () => {
         />
       </Link>
       <ul className="flex my-8 mx-1 p-2">
-        <li className="mx-2 p-1 hover:bg-slate-200 rounded-xl" key="home">
+        <li className={st} key="home">
           <Link to={"/"}>Home</Link>
         </li>
-        <li className="mx-2 p-1 hover:bg-slate-200 rounded-xl" key="AboutUs">
+        <li className={st} key="AboutUs">
           <Link to={"/about"}>About Us</Link>
         </li>
-        <li className="mx-2 p-1 hover:bg-slate-200 rounded-xl" key="Cart">
+        <li className={st} key="Cart">
           Cart
         </li>
       </ul>
       <div className="flex my-8 mx-1 p-2">{isOnline ? "🟢" : "🔴"}</div>
+      <h1 className="flex my-8 mx-1 p-2">Welcome {user.name}</h1>
       {loggedIn ? (
         <button
-          className="rounded-md bg-purple-200 h-10 w-14 my-8 shadow-md hover:bg-purple-300"
+          className={btn_st}
           onClick={() => {
             setLoggedIn(false);
+            setUser({
+              name: "",
+              email: "",
+            });
           }}
         >
           Logout
         </button>
       ) : (
         <button
-          className="rounded-md bg-purple-200 h-10 w-14 my-8 shadow-md hover:bg-purple-300"
+          className={btn_st}
           onClick={() => {
             setLoggedIn(true);
           }}
