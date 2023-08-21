@@ -2,7 +2,6 @@ import ReactDOM from "react-dom/client";
 import FooterContainer from "./components/FooterContainer";
 import BodyContainer from "./components/BodyContainer";
 import HeaderContainer from "./components/HeaderContainer";
-// import About from "./components/About";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
@@ -12,6 +11,9 @@ import Profile from "./components/Profile";
 import { lazy, Suspense, useContext, useState } from "react";
 import UserContext from "./utils/UserContext";
 import InstaMart from "./components/InstaMart";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 
 // to lazy load or to make a component load on demand, we use lazy() method of react library.
 const About = lazy(() => import("./components/About"));
@@ -24,11 +26,13 @@ const PageContainer = () => {
   });
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <HeaderContainer />
-      <Outlet />
-      <FooterContainer />
-    </UserContext.Provider>
+    <Provider store={store}>
+      <UserContext.Provider value={{ user, setUser }}>
+        <HeaderContainer />
+        <Outlet />
+        <FooterContainer />
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -72,6 +76,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/instamart",
         element: <InstaMart />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

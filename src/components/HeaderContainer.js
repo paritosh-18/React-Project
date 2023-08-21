@@ -3,11 +3,15 @@ import { IMG_LOGO_URL } from "../config";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const HeaderContainer = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const isOnline = useOnline();
   const { user, setUser } = useContext(UserContext);
+
+  const items = useSelector((store) => store.cart.items);
+
   const st = "mx-2 p-1 hover:bg-slate-200 rounded-xl";
   const btn_st =
     "rounded-md bg-purple-200 h-10 w-14 my-8 shadow-md hover:bg-purple-300";
@@ -28,7 +32,7 @@ const HeaderContainer = () => {
           <Link to={"/about"}>About Us</Link>
         </li>
         <li className={st} key="Cart">
-          Cart
+          <Link to="/cart">Cart {items.length}</Link>
         </li>
       </ul>
       <div className="flex my-8 mx-1 p-2">{isOnline ? "🟢" : "🔴"}</div>
