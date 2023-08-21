@@ -23,7 +23,11 @@ const Cart = () => {
                 {item?.card?.info?.name}
               </h1>
               <h1 className="text-xs">{item?.card?.info?.description}</h1>
-              <h1>{"Rs. " + item?.card?.info?.defaultPrice / 100 + ".0"}</h1>
+              <h1>
+                {"Rs. " +
+                  (item?.card?.info?.defaultPrice / 100 ||
+                    item?.card?.info?.price / 100)}
+              </h1>
             </div>
           );
         })}
@@ -34,6 +38,16 @@ const Cart = () => {
       >
         Clear Cart
       </button>
+      <h1>
+        Total:
+        {cartItems.reduce((acc, item) => {
+          return (
+            acc +
+            (item?.card?.info?.price / 100 ||
+              item?.card?.info?.defaultPrice / 100)
+          );
+        }, 0)}
+      </h1>
     </div>
   );
 };
